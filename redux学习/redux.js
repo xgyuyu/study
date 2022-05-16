@@ -4,6 +4,7 @@
 
 
 
+
 const createStore = (reducer, initState, rewritesStoreFunc) => {
 
     if (rewritesStoreFunc) {
@@ -132,7 +133,7 @@ const reducer = combineReducer({
 
 
 
-const next = store.dispatch;
+// const next = store.dispatch;
 
 
 //loggerMiddleWare.js
@@ -144,8 +145,8 @@ const loggerMiddleWare = (store) => (next) => (action) => {
 }
 
 /**
- * 
- * 
+ *
+ *
  * function a(next){
  *  return  function (action){
  *      next(action);
@@ -153,7 +154,7 @@ const loggerMiddleWare = (store) => (next) => (action) => {
  * }
  */
 
-// //记录修改异常  exceptionMiddleWare.js 
+// //记录修改异常  exceptionMiddleWare.js
 const exceptionMiddleWare = (store) => (next) => (action) => {
     // setTimeout(()=>{
     //     next(action)
@@ -204,7 +205,7 @@ const applyMiddleware = (...middlewares) => {
                 dispatch = middleware(dispatch)
             })
 
-            //store.dispatch = exception(logger(next)); //一层 
+            //store.dispatch = exception(logger(next)); //一层
             store.dispatch = dispatch;
             return store;
         }
@@ -222,9 +223,9 @@ store.subscribe(() => {
 
 
 //loggerMiddleWare(exceptionMiddleWare)
-// store.dispatch = exception(logger(next)); //一层 
+// store.dispatch = exception(logger(next)); //一层
 
-//独立中间件 
+//独立中间件
 
 
 
@@ -256,7 +257,7 @@ store.subscribe(() => {
 // }
 
 
-//动态扩展dispatch 
+//动态扩展dispatch
 
 
 
@@ -278,7 +279,7 @@ store.dispatch({
 
 
 //redux-promise
-// 
+//
 // const asyncMiddle = (store) => (next) => (action) => {
 //     next({ type: 'Loading', payload: val })//
 //     promise.then((val) => {
